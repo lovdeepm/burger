@@ -1,38 +1,38 @@
-<h1>Burger Time!</h1>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Eat-Da-Burger</h1>
+    <p class="lead">It's Burger Time!</p>
+    <img src="assets/image/burger.jpg" alt="Burger">
 
-<h2>Not Devoured</h2>
-
-<ul>
-  {{#each Burger}}
-    {{#unless Devoured}}
-      {{> burgers/burger-block devoured=true}}
+<form class="create-burger">
+  <div class="form-group">
+    <label for="textinput">Enter burger name here.</label>
+    <input type="text" class="form-control form-control-lg" id="burger" aria-describedby="text" placeholder="Burger Name Here!">
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+<br>
+<hr>
+<div class="row">
+    <div class="col-6 col-md-4">Burgers to Devour!
+      <ul>
+  {{#each burgers}}
+    {{#unless devoured}}
+    {{> burgers/burger-block devoured=true}}
     {{/unless}}
   {{/each}}
 </ul>
-
-<h2>Burgers that are sleepy!</h2>
-
-<ul>
-  {{#each Burger}}
-    {{#if Devoured}}
-      {{> burgers/burger-block devoured=false}}
+    </div>
+    <div class="col-6 col-md-4"></div>
+    <div class="col-6 col-md-4">Devoured!
+  <ul>
+  {{#each burgers}}
+    {{#if devoured}}
+    {{> burgers/burger-devour devoured=false}}
     {{/if}}
   {{/each}}
 </ul>
-
-<h2>Add a Burger</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="ca">Burger Name:</label>
-    <input type="text" id="ca" name="name">
+    </div>
   </div>
-
-  <div class="form-group">
-    <label for="slee">Hungry?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Hungry!<br>
-    <input type="radio" name="sleepy" value="0"> Full
   </div>
-
-  <button type="submit">Add Burger</button>
-</form>
+</div>
